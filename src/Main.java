@@ -1,21 +1,18 @@
-import example.PeopleQueue;
-import example.StopableRunnable;
+import example.Counter;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        StopableRunnable runnable = new StopableRunnable();
-        new Thread(runnable).start();
 
+        Counter counter = new Counter();
+        Runnable r1 = () -> counter.add(2);
+        Runnable r2 = () -> counter.add(3);
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Thread(r1).start();
+        new Thread(r2).start();
 
-        runnable.doStop();
+        System.out.println(counter.count);
 
 
     }
