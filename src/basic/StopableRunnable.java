@@ -1,4 +1,4 @@
-package example;
+package basic;
 
 public class StopableRunnable implements Runnable {
 

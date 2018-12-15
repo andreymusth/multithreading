@@ -1,19 +1,25 @@
-import example.Counter;
+import syncr.Counter;
+import syncr.CounterThread;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        Counter c = new Counter();
 
-        Counter counter = new Counter();
-        Runnable r1 = () -> counter.add(2);
-        Runnable r2 = () -> counter.add(3);
+        CounterThread ct1 = new CounterThread(c);
+        CounterThread ct2 = new CounterThread(c);
 
-        new Thread(r1).start();
-        new Thread(r2).start();
+        ct1.start();
+        ct2.start();
 
-        System.out.println(counter.count);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println(c.count);
 
     }
 }

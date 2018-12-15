@@ -1,4 +1,4 @@
-package example;
+package basic;
 
 public class CreatingAndStartingThreads {
 
@@ -17,19 +17,5 @@ public class CreatingAndStartingThreads {
         public void run() {
             System.out.println("My runnable");
         }
-    }
-
-
-    public static void main(String[] args) {
-
-        System.out.println(Thread.currentThread().getName());
-        for (int i = 0; i < 10; i++) {
-            new Thread("" + i) {
-                public void run() {
-                    System.out.println("Thread: " + getName() + " running");
-                }
-            }.start();
-        }
-
     }
 }
