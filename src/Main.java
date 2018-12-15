@@ -1,14 +1,22 @@
 import example.PeopleQueue;
+import example.StopableRunnable;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        PeopleQueue queue1 = new PeopleQueue("Maria", "Nasta", "Daria");
-        PeopleQueue queue2 = new PeopleQueue("Sergei", "Vasya", "Ilya", "Petr");
+        StopableRunnable runnable = new StopableRunnable();
+        new Thread(runnable).start();
 
-        queue1.start();
-        queue2.start();
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        runnable.doStop();
+
 
     }
 }
