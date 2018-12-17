@@ -18,7 +18,7 @@ public class MyCallable implements Callable<String> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        callback.onSucceed("sdfsdf");
+        callback.onSucceed();
         return "first collable";
     }
 }
